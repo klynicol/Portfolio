@@ -1,11 +1,14 @@
 /*--DOM LOOKUPS--*/
-let navAnimation = $('#nav-links'),
+let navLinks = $('#nav-links'),
 	headerBackground = $('#header-background'),
 	logoBackground = $('#logo-backgrd'),
 	logoImg = $('#logo-img'),
 	topPolygon = $('#top-polygon'),
-	logoLeftLines = [$('#line-two'),$('#line-one')],
-	logoRightLines = $('#line-three, #line-four'),
+	leftLine1 = $('#line-one'),
+	leftLine2 = $('#line-two'),
+	rightLine1 = $('#line-three'),
+	rightLine2 = $('#line-four'),
+	logoShapes = $('#logo1, #logo2, #logo3, #logo4, #logo5, #logo6'),
 	chronLogo = $('#pizzaChron-logo'),
 	firstContent = $('.first-content'),
 	secondContent = $('.second-content'),
@@ -23,10 +26,7 @@ let windowHeight = $(window).height(),
 	animateBeen = true,
 	animateGoing = true;
 
-//setting the initial animation css
-$('').css('');
-
-/*--define top polygon animation points--*/
+/*--define polygon animation points--*/
 let getPoints = function(){
 	let minY = 145,
 		maxY = 180,
@@ -39,36 +39,76 @@ let getRand = function(min, max){
 	maxMath = Math.floor(max);
 	return Math.floor(Math.random() * (maxMath - minMath + 1)) + minMath; 
 }
-/*--define logo line tweens--*/
-let lineAnimation = new TimelineLite();
-lineAnimation.add([
-	TweenMax.to(logoRightLines, 0.8, {
-		ease: Power0,
-		height: 190,
-	}, 0.8),
-	TweenMax.to(logoLeftLines, 0.8, {
-		ease: Power0,
-		height: 190,
-	}, 0.8),
-	TweenMax.staggerTo(logoLeftLines, 0.8, {
-		delay: 1.5,
+
+/*--define header animation--*/
+TweenLite.defaultEase = Linear.easeNone;
+let headerAnimation = new TimelineLite(), headerAnimation2 = new TimelineLite();
+
+headerAnimation.add([
+	TweenMax.to([rightLine1, rightLine2], 0.7, {
+		ease: Sine.easeInOut,
+		height: 190
+	}),
+	TweenMax.to([leftLine1, leftLine2], 0.7, {
+		ease: Sine.easeInOut,
+		height: 190
+	})
+]).pause();
+headerAnimation2.add([
+	TweenMax.staggerTo([leftLine1, leftLine2], 0.6, {
 		ease: Power1.easeInOut,
-		opacity:0,
-		left:-100,
+		//opacity:0,
+		left:-100
 	}, 0.8),
-	TweenMax.staggerTo(logoRightLines, 0.8, {
-		delay: 1.5,
+	TweenMax.staggerTo([rightLine2, rightLine1], 0.6, {
 		ease: Power1.easeInOut,
-		opacity:0,
-		left:100,
+		//opacity:0,
+		left:100
 	}, 0.8)
 ]).pause();
 
+/*--handle scrolling--*/
+let handleScrollDown = function(){
+		headerAnimation.play();
+		headerAnimation2.play();
+		logoImg.css('opacity' , '0');
+		if(collapsed) navLinks.css('top', '-100px');
+		headerBackground.css({
+			'height':'190px'
+		});
+		logoBackground.css({
+			'height':'190px'
+		});
+	},
+	handleScrollUp = function(){
+		headerAnimation2.reverse();
+		headerAnimation.reverse();
+		TweenMax.to(topPolygon, 1, {attr:{points: "0,0 0,235 200,235 400,235 600,235 800,235 1000,235 1200,235 1400,235 1600,235 1800,235 2000,235 2200,235 2400,235 2600,235 2800,235 3000,235 3000,0"}});
+		logoImg.css('opacity' , '1');
+		if(collapsed) navLinks.css('top', '0px');
+		headerBackground.css({
+			'height':'250px'
+		});
+		logoBackground.css({
+			'height':'250px'
+		});
+	},
+	postAnimationCss = function(){
+		logoImg.css({
+			'-webkit-transition': 'all 0.5s',
+		    'transition': 'all 0.5s',
+		});
+		navLinks.css({
+			'-webkit-transition': 'all 1s',
+		    'transition': 'all 1s'
+		});
+	}
+
 
 $('document').ready(function(){
-	$('.about-content').css('height', (windowHeight - 300));
-	$('.general-content').css('height', (windowHeight - 300));
 	/*--INIT--*/
+	$('.about-content').css('height', (windowHeight - 300)); //first carousel
+	$('.general-content').css('height', (windowHeight - 300)); //other carousels
 	$.scrollify({
 		section : ".scrollify",
 	    sectionName : "section-name",
@@ -87,7 +127,7 @@ $('document').ready(function(){
 	    afterResize:function() {},
 	    afterRender:function() {}
 	});
-	$('.first-carousel, .second-carousel, .third-carousel').slick({
+	$('.first-carousel, .second-carousel, .third-carousel').slick({ //carousel init
 		dots: true,
 		arrrows: true,
 		infinite: true,
@@ -96,26 +136,39 @@ $('document').ready(function(){
 	});
 
 	/*--LOADING ANIMATIONS--*/
-	TweenMax.from(navAnimation, 0.8, {delay: 1, ease: Back.easeOut.config(1), top:-300, onComplete: function(){
-		logoImg.css({
-			'-webkit-transition': 'all 1s',
-		    'transition': 'all 1s'
+	if(y <= 200 && $.scrollify.current().attr('data-section-name') === "about"){
+		TweenMax.from(navLinks, 0.8, {
+			delay: 1, 
+			ease: Back.easeOut.config(1), 
+			top:-300, 
+			onComplete: postAnimationCss()
 		});
-		navAnimation.css({
-			'-webkit-transition': 'all 1s',
-		    'transition': 'all 1s'
+		TweenMax.staggerFrom([leftLine2, leftLine1], 0.8, {
+			ease: Strong.easeOut,
+			delay: 1.5,
+			left:-100
+		}, 0.7);
+	 	TweenMax.staggerFrom([rightLine1, rightLine2], 0.8, {
+			ease: Strong.easeOut, 
+			delay: 1.5, 
+			left:100
+		}, 0.7);
+		TweenMax.staggerFrom(logoShapes, 0.3, {
+			ease: Back.easeOut.config(1),
+			top: -400
+		}, 0.2);
+		TweenMax.from(logoImg, 0.7,{
+			opacity: 0,
+			delay: 1.4
 		});
-	}});
-	TweenMax.staggerFrom(logoLeftLines, 0.8, {
-		ease: Strong.easeOut,
-		opacity:0,
-		left:-100
-	}, 1),
- 	TweenMax.staggerFrom(logoRightLines, 0.8, {
-		ease: Strong.easeOut, 
-		opacity:0, 
-		left:100
-	}, 1);
+		console.log(y);
+	} else {
+		console.log("check1 " + y);
+		handleScrollDown();
+		TweenMax.to(topPolygon, 0.5, {attr:{points: getPoints()}});
+		postAnimationCss();
+	}
+
 
 	/*--WINDOW SCROLL--*/
 	window.addEventListener('scroll', function(){
@@ -126,20 +179,7 @@ $('document').ready(function(){
 		if(y > 200){
 			/*all scroll events not related to the polygon*/
 			if(scroll){
-				logoImg.css({
-					'height': '120px',
-					'width': '120px',
-					'top': '15px',
-					'left': '-50px'
-				});
-				if(collapsed) navAnimation.css('top', '-100px');
-				headerBackground.css({
-					'height':'190px'
-				});
-				logoBackground.css({
-					'height':'190px'
-				});
-				lineAnimation.play();
+				handleScrollDown();
 				scroll = false;
 			}
 			/*handle top polygon anmation*/
@@ -150,21 +190,7 @@ $('document').ready(function(){
 
 		} else {
 			if(!scroll){
-				TweenMax.to(topPolygon, 1, {attr:{points: "0,0 0,235 200,235 400,235 600,235 800,235 1000,235 1200,235 1400,235 1600,235 1800,235 2000,235 2200,235 2400,235 2600,235 2800,235 3000,235 3000,0"}});
-				logoImg.css({
-					'height': '200px',
-					'width': '200px' ,
-					'top': '0px',
-					'left': '-85px'
-				});
-				if(collapsed) navAnimation.css('top', '0px');
-				headerBackground.css({
-					'height':'250px'
-				});
-				logoBackground.css({
-					'height':'250px'
-				});
-				lineAnimation.reverse();
+				handleScrollUp();
 				scroll = true;
 			}
 		}
