@@ -22,7 +22,13 @@
     <div id="header-background"></div>
     <div id="poly-wrapper">
       <svg id="header-svg" width="3000" height="260">
-        <polygon id="top-polygon" stroke-linejoin="round" points="0,0 0,235 200,235 400,235 600,235 800,235 1000,235 1200,235 1400,235 1600,235 1800,235 2000,235 2200,235 2400,235 2600,235 2800,235 3000,235 3000,0" />
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#64ccca;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#38a8a6;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <polygon fill="url(#grad1)" id="top-polygon" stroke-linejoin="round" points="0,0 0,235 200,235 400,235 600,235 800,235 1000,235 1200,235 1400,235 1600,235 1800,235 2000,235 2200,235 2400,235 2600,235 2800,235 3000,235 3000,0" />
       </svg>
     </div>
     <div id="logo-wrapper">
@@ -88,11 +94,12 @@
     <div class="body-offset"></div>
     <div class="carousel-wrapper">
       <div class="second-carousel">
-        <div class="general-content">
-          <h1 id="testing-animation">This element should be animated when scrolling down</h1>
-        </div>
-        <div class="general-content">
-          <h1>This is the first slide</h1>
+        <div class="general-content slick-active">
+          <div class="container-fluid d-flex">
+            <div class="flex-column justify-content-between align-self-center full-height">
+              <img id="chron-logo" class="inline-block" src="pics/pizzaChronLogo.png">
+              <img id="chron-computers" class="img-fluid inline-block align-bottom" src="pics/chronComputers.png">
+          </div>
         </div>
         <div class="general-content">
           <h1>This is the first slide</h1>
@@ -125,6 +132,7 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/TweenMax.min.js"></script>
         <script type="text/javascript" src="js/TimelineLite.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/RoundPropsPlugin.min.js"></script>
         <script type="text/javascript" src="js/slick.min.js"></script>
         <script type="text/javascript" src="main.js"></script>
 
