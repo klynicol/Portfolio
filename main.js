@@ -10,6 +10,7 @@ let navLinks = $('#nav-links'),
 	rightLine2 = $('#line-four'),
 	logoShapes = $('#logo1, #logo2, #logo3, #logo4, #logo5, #logo6'),
 	chronLogo = $('#pizzaChron-logo'),
+	carouselWrapper = $('.carousel-wrapper'),
 	firstContent = $('.first-content'),
 	secondContent = $('.second-content'),
 	thirdContent = $('.third-content');
@@ -21,6 +22,9 @@ let windowHeight = $(window).height(),
 	polyTick = 0,
 	y = window.pageYOffset,
 	scroll = false,
+	deg = {value: -118},
+	currentPage = null, //holds curernt page
+	lastPage = null,
 	animateWorkOne = true,
 	animateWorkTwo = true,
 	animateBeen = true,
@@ -102,13 +106,17 @@ let handleScrollDown = function(){
 			'-webkit-transition': 'all 1s',
 		    'transition': 'all 1s'
 		});
+	},
+	changeGradient = function(){
+		carouselWrapper.css('background-image' , '-webkit-linear-gradient(' + deg.value + 'deg, #42CD83 0%, #B0DB21 50%, #2DCBC0 50%, #8D94AC 100%)');
 	}
 
+//to top right
 
 $('document').ready(function(){
 	/*--INIT--*/
-	$('.about-content').css('height', (windowHeight - 300)); //first carousel
-	$('.general-content').css('height', (windowHeight - 300)); //other carousels
+	$('.general-content').css('height', (windowHeight - 260)); //other carousels
+	$('.about-content').css('height', (windowHeight - 315)); //first carousel
 	$.scrollify({
 		section : ".scrollify",
 	    sectionName : "section-name",
@@ -173,6 +181,28 @@ $('document').ready(function(){
 	/*--WINDOW SCROLL--*/
 	window.addEventListener('scroll', function(){
 		y = window.pageYOffset;
+		currentPage = $.scrollify.current().attr('data-section-name');
+		/*-----------------------------
+		----GRADIENT CHANGE IMPLIMENTS-
+		-------------------------------*/
+		if(lastPage !== currentPage){
+			if(deg.value == -118){
+				TweenMax.to(deg, 1.1, {
+					value:"+=58",
+					roundProps:"value",
+					onUpdate: changeGradient,
+					ease: Power2.easeInOut
+				});
+			} else {
+				TweenMax.to(deg, 1.1, {
+					value:"-=58",
+					roundProps:"value",
+					onUpdate: changeGradient,
+					ease: Power2.easeInOut
+				});
+			}
+			lastPage = currentPage;
+		}
 		/*---------------------------
 		----HEADER SCROLL IMPLIMENTS-
 		----------------------------*/
@@ -194,12 +224,6 @@ $('document').ready(function(){
 				scroll = true;
 			}
 		}
-		/*---------------------------
-		----CAROUSEL SNAPPING--------
-		----------------------------*/
-
-
-
 		/*---------------------------
 		----FIRST SLIDE ANIMATION----
 		----------------------------*/
