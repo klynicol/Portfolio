@@ -8,24 +8,28 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <link rel="stylesheet" href="css/bootstrap.css" />
-      <link rel="stylesheet" type="text/css" href="css/slick.css" />
-      <link rel="stylesheet" type="text/css" href="css/slick-theme.css" />
-      <link rel="stylesheet" type="text/css" href="css/fullPage.css" />
+      <link rel="stylesheet" href="css/fullPage.css" />
+      <link rel="stylesheet" href="css/slick.css" />
+      <link rel="stylesheet" href="css/slick-theme.css" />
       <link rel="stylesheet" href="css/style.css" />
+      <!--font-->
+      <link href="https://fonts.googleapis.com/css?family=Muli:400,900" rel="stylesheet">
   </head>
 <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+
+
 <header>
-  <section id="shapes">
+  <div id="shapes">
     <div id="header-background"></div>
     <div id="poly-wrapper">
       <svg id="header-svg" width="3000" height="260">
         <defs>
-          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#64ccca;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#38a8a6;stop-opacity:1" />
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%" gradientTransform="rotate(90)">
+            <stop offset="0%" style="stop-color:#00edea;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#cfe3fc;stop-opacity:1" />
           </linearGradient>
         </defs>
         <polygon fill="url(#grad1)" id="top-polygon" stroke-linejoin="round" points="0,0 0,235 200,235 400,235 600,235 800,235 1000,235 1200,235 1400,235 1600,235 1800,235 2000,235 2200,235 2400,235 2600,235 2800,235 3000,235 3000,0" />
@@ -37,104 +41,310 @@
       <div id="line-two" class="logo-backgrd-line"></div>
       <div id="line-three" class="logo-backgrd-line"></div>
       <div id="line-four" class="logo-backgrd-line"></div>
-      <img id="logo1" class="logo-line" src="pics/logo/Line1.png"/>
-      <img id="logo2" class="logo-line" src="pics/logo/Line2.png"/>
-      <img id="logo3" class="logo-line" src="pics/logo/Line3.png"/>
-      <img id="logo4" class="logo-line" src="pics/logo/Line4.png"/>
-      <img id="logo5" class="logo-line" src="pics/logo/Line5.png"/>
-      <img id="logo6" class="logo-line" src="pics/logo/Line6.png"/>
-      <img id="logo-img" src="pics/logo/Name.png"/>
+      <img id="logo-mix" src="assets/images/logo/logoBuild.png" />
+      <img id="logo1" class="logo-line" src="assets/images/logo/Line1.png"/>
+      <img id="logo2" class="logo-line" src="assets/images/logo/Line2.png"/>
+      <img id="logo3" class="logo-line" src="assets/images/logo/Line3.png"/>
+      <img id="logo4" class="logo-line" src="assets/images/logo/Line4.png"/>
+      <img id="logo5" class="logo-line" src="assets/images/logo/Line5.png"/>
+      <img id="logo6" class="logo-line" src="assets/images/logo/Line6.png"/>
+      <img id="logo-img" src="assets/images/logo/Name.png"/>
     </div>
-  </section>
+  </div>
 
-<nav class="navbar fixed-top navbar-expand-md navbar-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="topNav">
-    <div class="relative">
-      <div id="nav-links">
-        <div class="container nav-wrapper">
-          <div id="nav-container" class="container d-flex flex-row justify-content-between navbar-nav">
-            <a class="nav-item nav-link active" href="#">About<span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Work</a>
-            <div id="logo-spacer"></div>
-            <a class="nav-item nav-link" href="#">Been</a>
-            <a class="nav-item nav-link" href="#">Going</a>
+  <nav class="navbar fixed-top navbar-expand-md navbar-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="topNav">
+      <div class="relative">
+        <div id="nav-links">
+          <div class="container nav-wrapper">
+            <div id="nav-container" class="container d-flex flex-row justify-content-between navbar-nav">
+              <a id="about-button" class="nav-item nav-link active" href="#">About<span class="sr-only">(current)</span></a>
+              <a id="work-button" class="nav-item nav-link" href="#">Work</a>
+              <div id="logo-spacer"></div>
+              <a id="been-button" class="nav-item nav-link" href="#">Been</a>
+              <a id="going-button" class="nav-item nav-link" href="#">Going</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</nav>
-
+  </nav>
 </header>
 
 
-<main>
-
-
-  <div class="scrollify" data-section-name="about">
-    <div class="body-offset" id="first-offset"></div>
+<section id="about-section" data-panel="about">
+    <div id="first-offset"></div>
     <div class="carousel-wrapper">
-      <div class="first-carousel">
-        <div class="general-content about-content">
-          <h1 id="pizzaChron-logo">This is the first slide this will contain all the content and should be behind everything that is in the header section of the page</h1>
-        </div>
-        <div class="general-content about-content">
-          <h1>This is the first slide</h1>
-        </div>
-        <div class="general-content about-content">
-          <h1>This is the first slide</h1>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="scrollify" data-section-name="pizzachron">
-    <div class="body-offset"></div>
-    <div class="carousel-wrapper">
-      <div class="second-carousel">
-        <div class="general-content slick-active">
-          <div class="container-fluid d-flex">
-            <div class="flex-column justify-content-between align-self-center full-height">
-              <img id="chron-logo" class="inline-block" src="pics/pizzaChronLogo.png">
-              <img id="chron-computers" class="img-fluid inline-block align-bottom" src="pics/chronComputers.png">
+      <div class="container-fluid">
+        <div class="about-content d-flex flex-column justify-content-center text-center">
+          <h1>Hi, I'm Mark. I'm a full stack web developer.</h1>
+          <div class="row">
+            <div id="profile-picture-column" class="col-md-4">
+              <img alt="Profile Picture 1" id="picture-profile" class="profile-picture img-fluid box-shadow" src="assets/images/profile.jpg">
+            </div>
+            <div class="col-md d-flex flex-column justify-content-center">
+              <h5 class="align-middle about-paragraph box-shadow">I focus on clean, well documented and secure code. Ever since I started writing code 5 years ago I knew it would be a rewarding career choice for a long future. <br>I love the challenge and diversity.</h5>
+            </div>
+          </div>
+          <div class="about-skills-wrapper">
+            <h3 class="bold alt-heading">Languages I've used:</h3>
+            <div id="languages">
+              <div>Javascript</div>
+              <div>TypeScript</div>
+              <div>HTML</div>
+              <div>CSS</div>
+              <div>Sass</div>
+              <div>Python</div>
+              <div>C#</div>
+              <div>Java</div>
+              <div>PHP</div>
+              <div>C++</div>
+            </div>
+          </div>
+          <div class="about-skills-wrapper">
+            <h3 class="bold alt-heading">Web technologies I've used:</h3>
+            <div id="technologies">
+              <div>JQuery</div>
+              <div>Bootstrap</div>
+              <div>Bulma</div>
+              <div>Angular</div>
+              <div>Meteor</div>
+              <div>Node.js</div>
+              <div>MongoDB</div>
+              <div>Ajax</div>
+              <div>MySQL</div>
+              <div>JSON</div>
+              <div>Handlebars</div>
+              <div>Babel</div>
+              <div>Webpack</div>
+              <div>Express</div>
+              <div>Wordpress</div>
+            </div>
+          </div>
+          <div class="social-icon-wrapper">
+              <a target="_blank" href="https://www.linkedin.com/in/markwickline/"><img alt="Linked In" class="social-icon" src="assets/images/icons/linkedin.png"/></a>
+              <a target="_blank" href="https://github.com/klynicol"><img alt="Git Hub" class="social-icon" src="assets/images/icons/github.png"/></a>
+              <a target="_blank" href="https://app.codesignal.com/profile/mark_w53"><img alt="Code Signal" class="social-icon" src="assets/images/icons/codefights.png"/></a>
+              <a target="_blank" href="https://www.instagram.com/dope_stone_lion/"><img alt="Instagram" class="social-icon" src="assets/images/icons/instagram.png"/></a><span id="email">mwicklinedev@gmail.com</span>
           </div>
         </div>
-        <div class="general-content">
-          <h1>This is the first slide</h1>
-        </div>
       </div>
     </div>
-  </div>
-  <div class="scrollify" data-section-name="maryann">
+</section>
+
+
+
+<section id="pizzachron-section" data-panel="pizzachron">
     <div class="body-offset"></div>
     <div class="carousel-wrapper">
-      <div class="third-carousel">
-        <div class="general-content">
-          <h1>This is the first slide</h1>
+      <div class="carousel">
+        <!--first slide-->
+        <div class="general-content slick-active">
+          <div class="container-fluid text-center d-flex flex-column justify-content-center">
+            <div class="row">
+              <div class="col text-left">
+                <h1><a class="color-link mr-auto" target="_blank" href="http://www.pizzachronicle.com">pizzachronicle.com</a></h1>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 d-flex flex-column justify-content-center">
+                <div>
+                  <img alt="Pizza Chronicle Logo" id="chron-logo" class="img-fluid" src="assets/images/chronlogochar.png">
+                </div>
+              </div>
+              <div class="col-lg-8 d-flex flex-column justify-content-center">
+                <div>
+                  <img alt="Pizza Chronicle Screen Shot" class="img-fluid height-limit" src="assets/images/chronimac.png">
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <!--end of first slide-->
+        <!--second slide-->
         <div class="general-content">
-          <h1>This is the first slide</h1>
+          <div class="container-fluid text-center d-flex flex-column justify-content-center">
+            <div class="row">
+              <div class="col d-flex flex-column justify-content-center">
+                <div>
+                  <h5 class="paragraph-width padding-bottom text-left padding-top">A personal project of mine. Pizza Chronicle is a single-page, user-based web application focused on ratings for frozen pizza and eventually restaurants. Login/Register and start posting ratings and reviews or just sit back and watch your client automatically display others comments and reviews. Written with mainly Typescript using Meteor.js, Angular 4, Node.js, MongoDB, Handlebars and Bootstrap by yours truly. UX and UI also designed by me. Credit for the logo and illustrations goes to my lovely girlfriend Tiffany (<a href="http://www.creatiffity.me" target="_blank">creatiffity.me</a>).</h5>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="container-fluid text-right">
+                  <span>
+                    <img alt="Pizza Chronicle Screen Shot" class="img-fluid height-limit-3 alt-heading" src="assets/images/chronipad.png">
+                  </span>
+                </div>
+              </div>
+              <div class="col-1"></div>
+              <div class="col">
+                <div class="container-fluid text-left">
+                  <span>
+                    <img alt="Pizza Chronicle Screen Shot" class="img-fluid height-limit-3 alt-heading" src="assets/images/chroniphone.png">
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div><!--end of container-->
         </div>
-        <div class="general-content">
-          <h1>This is the first slide</h1>
-        </div>
+        <!--end of second slide-->
       </div>
     </div>
-  </div>
+</section>
 
-</main>
+
+
+<section id="maryann-section" data-panel="maryann">
+    <div class="body-offset"></div>
+    <div class="carousel-wrapper">
+      <div class="carousel">
+        <!--first slide-->
+        <div class="general-content">
+          <div class="container-fluid d-flex flex-column justify-content-center">
+              <h1><a class="color-link mr-auto" target="_blank" href="http://www.maryannkuchera.com">maryannkuchera.com</a></h1>
+            <div class="text-center">
+                <img alt="MaryAnn Screen Shot" class="img-fluid height-limit alt-heading" src="assets/images/maryannimac.png"/>
+            </div>
+          </div>
+        </div>
+        <!--end of first slide-->
+        <!--second slide-->
+        <div class="general-content">
+          <div class="container-fluid text-center d-flex flex-column justify-content-center">
+            <div class="row">
+              <div class="col d-flex flex-column justify-content-center">
+                <div>
+                  <h5 class="paragraph-width text-left padding-top">A portfolio website for MaryAnn Kuchera, a massage therapist and artist living in Seattle. The challenge; She had a LOT of book reviews, pictures and other material that need to be organized and accessible. Her audience is mainly older people, thus I wanted to keep the site super minimal and easy to navigate. Designed and build from scratch by me using nothing but HTML, CSS and Javascript (Bootstrap, Jquery + plugins). Credit for the logo and illustrations goes to my lovely girlfriend Tiffany (<a href="http://www.creatiffity.me" target="_blank">creatiffity.me</a>).</h5>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="container-fluid text-center">
+                  <span>
+                    <img alt="MaryAnn Screen Shot" class="img-fluid height-limit-2" src="assets/images/maryannmacbook.png">
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div><!--end of container-->
+        </div>
+        <!--end of second slide-->
+      </div>
+    </div>
+</section>
+
+<section id="luis-section" data-panel="luis">
+    <div class="body-offset"></div>
+    <div class="carousel-wrapper">
+      <div class="carousel">
+        <!--first slide-->
+        <div class="general-content">
+          <div class="container-fluid text-center d-flex flex-column justify-content-center">
+            <div class="row">
+              <div class="col text-left">
+                <h1><a class="color-link mr-auto" target="_blank" href="http://www.aceseattle.com">aceseattle.com</a></h1>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3 d-flex flex-column justify-content-center">
+                <div>
+                  <img alt="Ace Building Services Screen Shot" class="img-fluid padding-left" src="assets/images/acelogochar.png">
+                </div>
+              </div>
+              <div class="col-lg-9 d-flex flex-column justify-content-center">
+                <div>
+                  <img alt="Ace Building Services Screen Shot" class="img-fluid height-limit" src="assets/images/luisimac.png">
+                </div>
+              </div>
+            </div>
+          </div><!--end of container-->
+        </div>
+        <!--end of first slide-->
+        <!--second slide-->
+        <div class="general-content">
+          <div class="container-fluid text-center d-flex flex-column justify-content-center">
+            <div class="row">
+              <div class="col d-flex flex-column justify-content-center">
+                <div>
+                  <h5 class="paragraph-width text-left padding-top">Luis Aceves owns a custodial service in Seattle and needed a website to present his brand with in a fresh professional manner. I built him a single page standalone site with Bootstrap. He was looking to take his business to the next level and I believe his website will be a great launching point for it. Credit for the logo and icons goes to my lovely girlfriend Tiffany (<a href="http://www.creatiffity.me" target="_blank">creatiffity.me</a>).</h5>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="container-fluid text-center">
+                  <span>
+                    <img alt="Ace Building Services Screen Shot" class="img-fluid height-limit-2 alt-heading" src="assets/images/luisiphone.png">
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div><!--end of container-->
+        </div>
+        <!--end of second slide-->
+      </div>
+    </div>
+</section>
+
+<section id="been-section" data-panel="been">
+    <div class="body-offset"></div>
+    <div class="carousel-wrapper">
+
+        <div class="general-content">
+          <div class="container-fluid d-flex flex-column justify-content-center">
+            <h1>Experience:</h1>
+            <h5 id="been-paragraph" class="box-shadow paragraph-width text-left">I've had the pleasure of experiencing many different types of industries; From being a restaurant owner in Colorado Springs to IT support in Seattle. However, my most recent undertaking as a self taught programmer and web developer has been the most rewarding by a long shot. The dev community is extremely rich with brilliant people and vast communities of open source contributors, it's a fast paced and exciting environment that's challenging and fun. My programming journey started by protyping games with a friend 5 years ago and has evolved into freelance web development for people in all walks of life. For the last one and a half years I've been coding for the web using as many technologies as I can get my hands on, and yet there's still so much to learn. 
+            <br><br>
+            <div class="text-center">
+              <img alt="Proile picture 2" id="been-picture" class="img-fluid profile-picture box-shadow" src="assets/images/profile2.jpg"/>
+            </div>
+            </h5>
+          </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="going-section" data-panel="going">
+    <div class="body-offset"></div>
+    <div class="carousel-wrapper">
+      <div class="general-content">
+        <div class="container-fluid d-flex flex-column justify-content-center">
+          <h1>In The Future:</h1>
+          <h5 id="going-paragraph" class="box-shadow paragraph-width text-left">I plan to secure a full time position as a web developer at a company in Minneapolis. I will continue to hone my skills and plan to write even tighter more efficient code. Pizza Chronicle will continue to be a pet project of mine as I continue to develop and market the application. One day I'll look back at the code I've written and laugh how ammature it really is.
+          <br><br>
+          <p>This website was designed and written by me.</p>
+          <br><br>
+          <div class="text-right">
+            <img alt="Mark Wickline signature" id="signature" class="img-fluid" src="assets/images/mwsig.png"/>
+          </div>
+          </h5>
+        </div><!--end of container-->
+      </div>
+    </div>
+</section>
+
+<!--slider arrows-->
+<img alt="previous page" id="arrow-up" src="assets/images/fullarrowup.png"/>
+<img alt="next page" id="arrow-down" src="assets/images/fullarrowdown.png"/>
+
 
 
         <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-        <script type="text/javascript" src="js/jquery.scrollify.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/TweenMax.min.js"></script>
         <script type="text/javascript" src="js/TimelineLite.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/RoundPropsPlugin.min.js"></script>
+        <script type="text/javascript" src="js/RoundPropsPlugin.min.js"></script>
+        <script type="text/javascript" src="js/panelsnap.js"></script>
         <script type="text/javascript" src="js/slick.min.js"></script>
-        <script type="text/javascript" src="main.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
         <!--script>
